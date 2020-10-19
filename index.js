@@ -65,10 +65,10 @@ function registrationHandler(req,res){
     const QUERY = `INSERT INTO users (username, password) VALUES ('${username}', '${password}')`;
 
     db.query(QUERY, (err, rows, fields)=>{
-        console.log(rows, err);
         if(err){
             return res.json({
-                status : 'Account creation failed'
+                status : 'Account creation failed',
+                message : err.sqlMessage
             })
         }
 
