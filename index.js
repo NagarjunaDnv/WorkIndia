@@ -105,8 +105,7 @@ function loginHandler(req,res){
         })
     }
 
-    const QUERY = `SELECT users.user_id from users where users.username = '${username}' and users.password = '${password}' 
-                    `;
+    const QUERY = `SELECT users.user_id from users where users.username = '${username}' and users.password = '${password}'`;
 
     db.query(QUERY, (err, rows, fields)=>{
 
