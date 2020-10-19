@@ -12,8 +12,7 @@ const db = mysql.createConnection({
     host : 'localhost',
     user : 'root',
     password : 'abc123',
-    port : '3306',
-    database : 'workIndia'
+    database : 'workindia'
 });
 
 
@@ -63,12 +62,10 @@ function registrationHandler(req,res){
         })
     }
 
-    const QUERY = `INSERT INTO users (username, password)
-                    VALUES (${username}, ${password})
-                    `;
+    const QUERY = `INSERT INTO users (username, password) VALUES ('${username}', '${password}')`;
 
     db.query(QUERY, (err, rows, fields)=>{
-
+        console.log(rows, err);
         if(err){
             return res.json({
                 status : 'Account creation failed'
@@ -108,7 +105,7 @@ function loginHandler(req,res){
         })
     }
 
-    const QUERY = `SELECT users.user_id from users where users.username = ${username} and users.password = ${password} 
+    const QUERY = `SELECT users.user_id from users where users.username = '${username}' and users.password = '${password}' 
                     `;
 
     db.query(QUERY, (err, rows, fields)=>{
