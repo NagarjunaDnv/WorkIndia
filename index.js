@@ -63,7 +63,7 @@ function registrationHandler(req,res){
         })
     }
 
-    const QUERY = `INSERT INTO workIndia (username, password)
+    const QUERY = `INSERT INTO users (username, password)
                     VALUES (${username}, ${password})
                     `;
 
