@@ -109,9 +109,17 @@ function loginHandler(req,res){
 
     db.query(QUERY, (err, rows, fields)=>{
 
+
         if(err){
             return res.json({
                 status : 'Login failed'
+            })
+        }
+
+        if(rows.length == 0){
+            return res.json({
+                status : 'Login Failed',
+                message : 'Either username or password is invalid'
             })
         }
 
