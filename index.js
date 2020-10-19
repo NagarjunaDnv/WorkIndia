@@ -43,21 +43,21 @@ function registrationHandler(req,res){
     console.log(username, password);
 
     if(!username && !password){
-        res.json({
+        return res.json({
             status: 'Account creation failed',
             message: 'Username and Password are required'
         })
     }
 
     if(!username){
-        res.json({
+        return res.json({
             status: 'Account creation failed',
             message: 'Username is required'
         })
     }
 
     if(!password){
-        res.json({
+        return res.json({
             status: 'Account creation failed',
             message: 'Password is required'
         })
@@ -70,12 +70,12 @@ function registrationHandler(req,res){
     db.query(QUERY, (err, rows, fields)=>{
 
         if(err){
-            res.json({
+            return res.json({
                 status : 'Account creation failed'
             })
         }
 
-        res.json({
+        return res.json({
             status : 'Account creation succesfull'
         })
     })
@@ -88,21 +88,21 @@ function loginHandler(req,res){
     console.log(username);
 
     if(!username && !password){
-        res.json({
+        return res.json({
             status: 'Login failed',
             message: 'Username and Password are required'
         })
     }
 
     if(!username){
-        res.json({
+       return res.json({
             status: 'Login failed',
             message: 'Username is required'
         })
     }
 
     if(!password){
-        res.json({
+        return res.json({
             status: 'Login failed',
             message: 'Password is required'
         })
@@ -114,12 +114,12 @@ function loginHandler(req,res){
     db.query(QUERY, (err, rows, fields)=>{
 
         if(err){
-            res.json({
+            return res.json({
                 status : 'Login failed'
             })
         }
 
-        res.json({
+        return res.json({
             status : 'Login succesfull',
             id : rows[0]['user_id']
         })
